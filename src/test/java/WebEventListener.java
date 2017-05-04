@@ -7,85 +7,86 @@ import org.testng.Reporter;
 public class WebEventListener implements WebDriverEventListener {
 
     public void beforeNavigateTo(String s, WebDriver webDriver) {
-        Reporter.log("At before navigate to");
+        Reporter.log("At before navigate to", true);
 
     }
 
     public void afterNavigateTo(String s, WebDriver webDriver) {
-        Reporter.log("At after navigate to");
+        Reporter.log("At after navigate to", true);
 
     }
 
     public void beforeNavigateBack(WebDriver webDriver) {
-        Reporter.log("At before navigate back");
+        Reporter.log("At before navigate back", true);
     }
 
     public void afterNavigateBack(WebDriver webDriver) {
-        Reporter.log("At after navigate back");
+        Reporter.log("At after navigate back", true);
     }
 
     public void beforeNavigateForward(WebDriver webDriver) {
-        Reporter.log("At before navigate forward");
+        Reporter.log("At before navigate forward", true);
 
     }
 
     public void afterNavigateForward(WebDriver webDriver) {
-        Reporter.log("At after navigate forward");
+        Reporter.log("At after navigate forward",true);
 
     }
 
     public void beforeNavigateRefresh(WebDriver webDriver) {
-        Reporter.log("At before navigate refresh");
+        Reporter.log("At before navigate refresh", true);
 
     }
 
     public void afterNavigateRefresh(WebDriver webDriver) {
-        Reporter.log("At after navigate refresh");
+        Reporter.log("At after navigate refresh", true);
 
     }
 
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
-        Reporter.log("At before find by");
+        Reporter.log("At before find by", true);
 
     }
 
     public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) {
-        Reporter.log("At after find by");
+        Reporter.log("At after find by", true);
 
     }
 
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
-        Reporter.log("At before click on");
+        Reporter.log("At before click on", true);
+
 
     }
 
     public void afterClickOn(WebElement webElement, WebDriver webDriver) {
-        Reporter.log("At after click on");
+        Reporter.log("At after click on", true);
 
     }
 
     public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
-        Reporter.log("At before change value of");
+        Reporter.log("At before change value of", true);
 
     }
 
     public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
-        Reporter.log("At after change value of");
+        Reporter.log("At after change value of", true);
 
     }
 
     public void beforeScript(String s, WebDriver webDriver) {
-        Reporter.log("At before script");
+        Reporter.log("At before script", true);
 
     }
 
     public void afterScript(String s, WebDriver webDriver) {
-        Reporter.log("At after script");
+        Reporter.log("At after script", true);
 
     }
 
     public void onException(Throwable throwable, WebDriver webDriver) {
-        Reporter.log("At on exception");
+        Reporter.log("At on exception", true);
 
     }
 }

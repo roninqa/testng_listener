@@ -1,9 +1,6 @@
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-/**
- * Created by cher1 on 5/3/17.
- */
 public class RetryAnalyzer implements IRetryAnalyzer{
 
     int counter = 0;
