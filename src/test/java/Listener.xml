@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="RetryListner">
+
+    <listeners>
+        <listener class-name="AnnotationTransformer" />
+    </listeners>
+
+    <test name="Retry">
+        <classes>
+            <class name="ListenerTest"/>
+        </classes>
+    </test>
+</suite>
