@@ -6,10 +6,6 @@ public class WebEventListener implements WebDriverEventListener {
 
     public void beforeNavigateTo(String s, WebDriver webDriver) {
         Reporter.log("At before navigate to: " + s, true);
-        if (webDriver instanceof JavascriptExecutor) {
-            ((JavascriptExecutor) webDriver)
-                    .executeScript("alert('hello world');");
-        }
 
     }
 
@@ -46,24 +42,47 @@ public class WebEventListener implements WebDriverEventListener {
 
     }
 
-    public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
+    public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) throws WebDriverException {
         Reporter.log("At before find by: " + by.toString(), true);
+        JavascriptExecutor js = (JavascriptExecutor)webDriver;
+        try {
+            js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
+        } catch (WebDriverException e) {
+            Reporter.log(e.toString(), true);
+        }
 
     }
 
-    public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) {
+    public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) throws WebDriverException {
         Reporter.log("At after find by: " + by.toString(), true);
+        JavascriptExecutor js = (JavascriptExecutor)webDriver;
+        try {
+            js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
+        } catch (WebDriverException e) {
+            Reporter.log(e.toString(), true);
+        }
 
     }
 
-    public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
+    public void beforeClickOn(WebElement webElement, WebDriver webDriver) throws WebDriverException{
         Reporter.log("At before click on: " + webElement.toString(), true);
-
+        JavascriptExecutor js = (JavascriptExecutor)webDriver;
+        try {
+            js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
+        } catch (WebDriverException e) {
+            Reporter.log(e.toString(), true);
+        }
 
     }
 
-    public void afterClickOn(WebElement webElement, WebDriver webDriver) {
+    public void afterClickOn(WebElement webElement, WebDriver webDriver) throws WebDriverException {
         Reporter.log("At after click on: " + webElement.toString(), true);
+        JavascriptExecutor js = (JavascriptExecutor)webDriver;
+        try {
+            js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
+        } catch (WebDriverException e) {
+            Reporter.log(e.toString(), true);
+        }
 
     }
 
@@ -88,22 +107,16 @@ public class WebEventListener implements WebDriverEventListener {
     }
 
     public void onException(Throwable throwable, WebDriver webDriver) {
-        Reporter.log("At on exception: " + throwable.toString(), true);
 
-        if (throwable.toString().contains("UnhandledAlertException")) {
-            Reporter.log("Chue's hello, world", true);
+        if (throwable.toString().contains("WebDriverException")) {
+            Reporter.log("At on exception: " + throwable.toString(), true);
+            JavascriptExecutor js = (JavascriptExecutor)webDriver;
+            js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
         }
-        else if (throwable.toString().contains("InvalidElementStateException")) {
-            Reporter.log("Caught InvalidElementStateException. Will execute JavaScript", true);
+        else {
+            Reporter.log("Let's go Dead Pool!!!", true);
             JavascriptExecutor js = (JavascriptExecutor)webDriver;
             js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
-        } else if (throwable.toString().contains("currently interactable")) {
-            Reporter.log("Contains Error Details. Will execute JavaScript", true);
-            JavascriptExecutor js = (JavascriptExecutor)webDriver;
-            js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
-        } else {
-            Reporter.log("F, it. A refresh will work just fine");
-            webDriver.navigate().refresh();
         }
 
     }

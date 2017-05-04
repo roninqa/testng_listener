@@ -32,11 +32,40 @@ public class ListenerTest {
         e_driver.register(webEventListener);
 
         e_driver.get("http://www.google.com");
+
+        // Click Cars for Sale
+        Thread.sleep(5000);
         e_driver.findElement(By.cssSelector("a[title='Cars for Sale']")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
         Assert.assertEquals(e_driver.findElement(By.tagName("h1")).getText(), "Search Cars for Sale");
-        Reporter.log("Chue: " + e_driver.findElement(By.tagName("h2")).getText(), true);
-        e_driver.findElement(By.cssSelector("div[id='allStylesSelector']")).click();
+        Reporter.log(e_driver.findElement(By.tagName("h2")).getText(), true);
+
+        // Click Find Local Dealers
+        Thread.sleep(5000);
+        e_driver.findElement(By.cssSelector("a[title='Find Local Dealers']")).click();
+
+        // Click Autotrader Logo
+        Thread.sleep(5000);
+        e_driver.findElement(By.cssSelector("a[data-qaid='atc-logo-link']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
+        Reporter.log(e_driver.findElement(By.tagName("h1")).getText(), true);
+
+        // Click Cars for Sale
+        Thread.sleep(5000);
+        e_driver.findElement(By.cssSelector("a[title='Cars for Sale']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
+        Assert.assertEquals(e_driver.findElement(By.tagName("h1")).getText(), "Search Cars for Sale");
+        Reporter.log(e_driver.findElement(By.tagName("h2")).getText(), true);
+
+        // Click Find Local Dealers
+        Thread.sleep(5000);
+        e_driver.findElement(By.cssSelector("a[title='Find Local Dealers']")).click();
+
+        // Click Autotrader Logo
+        Thread.sleep(5000);
+        e_driver.findElement(By.cssSelector("a[data-qaid='atc-logo-link']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
+        Reporter.log(e_driver.findElement(By.tagName("h1")).getText(), true);
     }
 
     @AfterMethod
