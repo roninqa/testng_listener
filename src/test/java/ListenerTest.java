@@ -44,7 +44,7 @@ public class ListenerTest {
         e_driver.register(webEventListener);
 
         e_driver.get("http://www.google.com");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[title='Cars for Sale']"))).click();
+        e_driver.findElement(By.cssSelector("a[title='Cars for Sale']")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")));
         Assert.assertEquals(e_driver.findElement(By.tagName("h1")).getText(), "Search Cars for Sale");
 

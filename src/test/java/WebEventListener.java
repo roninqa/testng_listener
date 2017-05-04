@@ -7,12 +7,12 @@ import org.testng.Reporter;
 public class WebEventListener implements WebDriverEventListener {
 
     public void beforeNavigateTo(String s, WebDriver webDriver) {
-        Reporter.log("At before navigate to " + s, true);
+        Reporter.log("At before navigate to: " + s, true);
 
     }
 
     public void afterNavigateTo(String s, WebDriver webDriver) {
-        Reporter.log("At after navigate to " + s, true);
+        Reporter.log("At after navigate to: " + s, true);
 
     }
 
@@ -45,12 +45,12 @@ public class WebEventListener implements WebDriverEventListener {
     }
 
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
-        Reporter.log("At before find by", true);
+        Reporter.log("At before find by: " + by.toString(), true);
 
     }
 
     public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) {
-        Reporter.log("At after find by", true);
+        Reporter.log("At after find by: " + by.toString(), true);
 
     }
 
@@ -86,7 +86,10 @@ public class WebEventListener implements WebDriverEventListener {
     }
 
     public void onException(Throwable throwable, WebDriver webDriver) {
-        Reporter.log("At on exception", true);
+        Reporter.log("At on exception: " + throwable.toString(), true);
+
+
+
 
     }
 }
