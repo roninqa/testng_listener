@@ -1,6 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.testng.Reporter;
 
@@ -8,6 +6,10 @@ public class WebEventListener implements WebDriverEventListener {
 
     public void beforeNavigateTo(String s, WebDriver webDriver) {
         Reporter.log("At before navigate to: " + s, true);
+        if (webDriver instanceof JavascriptExecutor) {
+            ((JavascriptExecutor) webDriver)
+                    .executeScript("alert('hello world');");
+        }
 
     }
 
@@ -88,8 +90,21 @@ public class WebEventListener implements WebDriverEventListener {
     public void onException(Throwable throwable, WebDriver webDriver) {
         Reporter.log("At on exception: " + throwable.toString(), true);
 
-
-
+        if (throwable.toString().contains("UnhandledAlertException")) {
+            Reporter.log("Chue's hello, world", true);
+        }
+        else if (throwable.toString().contains("InvalidElementStateException")) {
+            Reporter.log("Caught InvalidElementStateException. Will execute JavaScript", true);
+            JavascriptExecutor js = (JavascriptExecutor)webDriver;
+            js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
+        } else if (throwable.toString().contains("currently interactable")) {
+            Reporter.log("Contains Error Details. Will execute JavaScript", true);
+            JavascriptExecutor js = (JavascriptExecutor)webDriver;
+            js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
+        } else {
+            Reporter.log("F, it. A refresh will work just fine");
+            webDriver.navigate().refresh();
+        }
 
     }
 }
