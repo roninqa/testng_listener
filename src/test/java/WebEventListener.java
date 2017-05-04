@@ -7,12 +7,12 @@ import org.testng.Reporter;
 public class WebEventListener implements WebDriverEventListener {
 
     public void beforeNavigateTo(String s, WebDriver webDriver) {
-        Reporter.log("At before navigate to", true);
+        Reporter.log("At before navigate to " + s, true);
 
     }
 
     public void afterNavigateTo(String s, WebDriver webDriver) {
-        Reporter.log("At after navigate to", true);
+        Reporter.log("At after navigate to " + s, true);
 
     }
 
@@ -55,13 +55,13 @@ public class WebEventListener implements WebDriverEventListener {
     }
 
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
-        Reporter.log("At before click on", true);
+        Reporter.log("At before click on: " + webElement.toString(), true);
 
 
     }
 
     public void afterClickOn(WebElement webElement, WebDriver webDriver) {
-        Reporter.log("At after click on", true);
+        Reporter.log("At after click on: " + webElement.toString(), true);
 
     }
 
