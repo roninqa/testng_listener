@@ -42,6 +42,7 @@ public class WebEventListener implements WebDriverEventListener {
 
     }
 
+    // Important to have this
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) throws WebDriverException {
         Reporter.log("At before find by: " + by.toString(), true);
         JavascriptExecutor js = (JavascriptExecutor)webDriver;
@@ -53,6 +54,7 @@ public class WebEventListener implements WebDriverEventListener {
 
     }
 
+    // Important to have this
     public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) throws WebDriverException {
         Reporter.log("At after find by: " + by.toString(), true);
         JavascriptExecutor js = (JavascriptExecutor)webDriver;
@@ -64,6 +66,7 @@ public class WebEventListener implements WebDriverEventListener {
 
     }
 
+    // Important to have this
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) throws WebDriverException{
         Reporter.log("At before click on: " + webElement.toString(), true);
         JavascriptExecutor js = (JavascriptExecutor)webDriver;
@@ -75,6 +78,7 @@ public class WebEventListener implements WebDriverEventListener {
 
     }
 
+    // Important to have this
     public void afterClickOn(WebElement webElement, WebDriver webDriver) throws WebDriverException {
         Reporter.log("At after click on: " + webElement.toString(), true);
         JavascriptExecutor js = (JavascriptExecutor)webDriver;
@@ -106,18 +110,9 @@ public class WebEventListener implements WebDriverEventListener {
 
     }
 
+    // Important to maintain this as you may have new popups in the future and will need to catch the exception
     public void onException(Throwable throwable, WebDriver webDriver) {
-
-        if (throwable.toString().contains("WebDriverException")) {
-            Reporter.log("At on exception: " + throwable.toString(), true);
-            JavascriptExecutor js = (JavascriptExecutor)webDriver;
-            js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
-        }
-        else {
-            Reporter.log("Let's go Dead Pool!!!", true);
-            JavascriptExecutor js = (JavascriptExecutor)webDriver;
-            js.executeScript("document.getElementsByClassName('acsInviteButton acsDeclineButton')[0].click();");
-        }
+        Reporter.log(throwable.toString(), true);
 
     }
 }
