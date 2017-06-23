@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -31,7 +32,7 @@ public class ListenerTest {
         webEventListener = new WebEventListener();
         e_driver.register(webEventListener);
 
-        e_driver.get("http://www.google.com");
+        e_driver.get("http://test2.autotrader.com");
 
         // Click Cars for Sale
         Thread.sleep(5000);

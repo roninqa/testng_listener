@@ -8,10 +8,17 @@ public class RetryAnalyzer implements IRetryAnalyzer{
 
 
     public boolean retry(ITestResult iTestResult) {
-        if(counter < retryLimit) {
+        // Get the throwable message
+        Throwable cause = iTestResult.getThrowable();
+
+        // If assertion failure, then do not retry
+        if(cause.fillInStackTrace().toString().contains("Assert")) {
+            return false;
+        } else if (counter < retryLimit){ // Anything other issues it will retry
             counter++;
             return true;
         }
+
         return false;
     }
 }
