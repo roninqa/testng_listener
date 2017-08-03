@@ -4,17 +4,19 @@ import org.testng.ITestResult;
 public class RetryAnalyzer implements IRetryAnalyzer{
 
     int counter = 0;
-    int retryLimit = 1; // Starts at 0. It will retry 2 times
+//    int retryLimit = 1; // Starts at 0. It will retry 2 times
 
 
     public boolean retry(ITestResult iTestResult) {
         // Get the throwable message
         Throwable cause = iTestResult.getThrowable();
 
+        // cause.fillInStackTrace().toString().contains("Assert")
+
         // If assertion failure, then do not retry
-        if(cause.fillInStackTrace().toString().contains("Assert")) {
+        if(iTestResult.getThrowable().fillInStackTrace().toString().contains("Assert")) {
             return false;
-        } else if (counter < retryLimit){ // Anything other issues it will retry
+        } else if (counter < 1){ // Anything other issues it will retry
             counter++;
             return true;
         }
